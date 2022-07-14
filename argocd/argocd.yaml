@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2022-07-14T17:58:40Z"
+  generation: 2
+  name: argocd
+  namespace: argocd
+  resourceVersion: "3515"
+  uid: a109a7d2-22c3-419e-bcd0-a8a672f8d0d9
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+    path: argocd
+    repoURL: https://github.com/lgirton/gitops-k3d.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
